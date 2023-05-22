@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+  {% if user.is_authenticated %}
+  <li>
+    User {{ user }}
+  </li>
+  <li>
+    <a href="{% url 'auth' %}">Home</a>
+  </li>
+  {% else %}
+  <li>
+    Anonymous user
+  </li>
+  <li>
+    <a href="{% url 'login' %}">Login</a>
+  </li>
+  {% endif %}
+</ul>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

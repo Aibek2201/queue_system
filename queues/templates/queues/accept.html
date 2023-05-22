@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% if queue_in_process %}
+    <h1>Queue in process:</h1>
+    <p>Queue Number: {{ queue_in_process.queue_number }}</p>
+    <p>Status: {{ queue_in_process.status }}</p>
+{% endif %}
+
+<a href="{% url 'queues:get_first_queue' %}"><button>Қабылдау</button></a>
+
+</body>
+</html>

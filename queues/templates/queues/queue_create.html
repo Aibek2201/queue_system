@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Три кнопки-ссылки с Bootstrap</title>
+	<meta charset="utf-8">
+	<!-- Подключение файлов стилей Bootstrap -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container mt-5">
+		<h1 class="text-center mb-4">Выберите нужную ссылку:</h1>
+
+		<button class="btn btn-primary" onclick="showConfirmationInfo('Grant')">Grant</button>
+		<button class="btn btn-danger" onclick="showConfirmationInfo('Budget')">Budget</button>
+		<button class="btn btn-success" onclick="showConfirmationInfo('Other')">Other</button>
+
+		<!-- Модальное окно -->
+		<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="confirmationModalLabel">Подтверждение</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						Вы уверены, что хотите создать тикет типа <span id="queueType"></span>?
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+						<button type="button" class="btn btn-primary" onclick="createTicket()">Да, создать</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<form id="createTicketForm" method="POST" action="{% url 'queues:queue_create' %}">
+			{% csrf_token %}
+			<input type="hidden" name="queue_type" id="queueTypeInput">
+		</form>
+	</div>
+
+	<!-- Подключение файлов скриптов Bootstrap -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+	<script>
+		function showConfirmationInfo(queueType) {
+			// Заполняем значение типа очереди в модальном окне
+			document.getElementById("queueType").innerHTML = queueType;
+			document.getElementById("queueTypeInput").value = queueType;
+
+			// Открываем модальное окно
+			var confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'), {});
+			confirmationModal.show();
+		}
+
+		function createTicket() {
+			// Отправляем форму для создания тикета
+			document.getElementById("createTicketForm").submit();
+		}
+	</script>
+</body>
+</html>

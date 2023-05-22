@@ -1,0 +1,18 @@
+<h1>Мониторинг очереди</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Номер очереди</th>
+            <th>Окно</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for queue in queues_in_progress %}
+        <tr>
+            <td>{{ queue.queue_number }}</td>
+            <td>{{ window_numbers|default_if_none:"N/A" }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

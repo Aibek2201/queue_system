@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Детали талона</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="card-body text-center">
+            <h1 class="mt-4">Детали талона</h1>
+            <p class="card-text"><strong>Номер талона:</strong> {{ ticket.queue_number }}</p>
+            <p class="card-text"><strong>Статус:</strong> {{ ticket.status }}</p>
+            <p class="card-text"><strong>Тип талона:</strong> {{ ticket.queue_type }}</p>
+            <p class="card-text"><strong>Дата создания:</strong> {{ ticket.created_at|date:"Y-m-d H:i" }}</p>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Подключите здесь дополнительные скрипты, если необходимо -->
+</body>
+</html>

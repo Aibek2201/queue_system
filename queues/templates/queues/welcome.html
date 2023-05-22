@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Электрондық кезек</title>
+    <style>
+      body {
+        background-color: #A6CAE9;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+      }
+      h1 {
+        font-size: 4rem;
+        margin-top: 4rem;
+        color: #333;
+      }
+      p {
+        font-size: 2rem;
+        margin-top: 2rem;
+        color: #777;
+      }
+      a {
+        display: inline-block;
+        background-color: #007bff;
+        color: #fff;
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        margin-top: 2rem;
+      }
+      a:hover {
+        background-color: #0069d9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="{% static 'images/logo.png' %}" alt="Логотип компании" width=70%>
+      <h1> Қош келдіңіз!</h1>
+      <p>Қажетті бөлімді таңдаңыз</p>
+      <a href="{% url 'queues:queue_list' %}">Кезектер тақтасын көру</a><br>
+      <a href="{% url 'queues:queue_create' %}">Кезекке тұру</a>
+    </div>
+  </body>
+</html>
